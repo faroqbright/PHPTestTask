@@ -11,9 +11,12 @@ class SendCronEmail extends Controller
     //
     public function index()
     {
-    	Mail::send('email', [], function($message) {
-            $message->to('bilal.sheikh@appcrates.com');
-            $message->subject('Database Updated');
+        $to_email = "farooqbright@gmail.com";
+        $data = array('name' => "Successfully");
+        Mail::send('email', $data, function($message) use ($to_email) {
+        $message->to($to_email)
+        ->subject('Cron Job Mail');
+        $message->from("farooqbright@gmail.com",'Cron Job Mail');
         });
 
     }
